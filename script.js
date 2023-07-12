@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+updateScore();
+
 function getComputerChoice(){//returns rock paper or scissors
     /**
      * 0 is rock
@@ -35,4 +39,8 @@ function playRound(playerSelection, computerSelection){
             return("win");
         }
     }
+}
+function updateScore(){
+    document.getElementById("pScore").innerHTML = playerScore;
+    document.getElementById("cpuScore").innerHTML = computerScore;
 }

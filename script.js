@@ -1,6 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
 let gameDone = false;
+let resultBox= document.getElementById("result");
+resultBox.style.display = "none";
 
 const rockButton = document.getElementById("rockButton");
 rockButton.addEventListener("click", chooseRock);
@@ -65,13 +67,15 @@ function updateScore(){
 }
 
 function checkGameOver(){
-    if(playerScore == 5 || computerScore == 5){
+    if(playerScore == 5){
         gameDone = true;
         document.getElementById("gameOverResult").innerHTML = "You won";
+        resultBox.style.display = "block";
     }
     if(computerScore == 5){
         gameDone = true;
         document.getElementById("gameOverResult").innerHTML = "You lost";
+        resultBox.style.display = "block";
     }
 }
 

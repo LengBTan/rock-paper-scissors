@@ -107,12 +107,12 @@ function checkGameOver(){
     if(playerScore == 5){
         gameDone = true;
         document.getElementById("gameOverResult").innerHTML = "You won";
-        resultBox.style.display = "block";
+        resultBox.style.display = "flex";
     }
     if(computerScore == 5){
         gameDone = true;
         document.getElementById("gameOverResult").innerHTML = "You lost";
-        resultBox.style.display = "block";
+        resultBox.style.display = "flex";
     }
 }
 

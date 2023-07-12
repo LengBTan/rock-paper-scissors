@@ -1,8 +1,11 @@
 let playerScore = 0;
 let computerScore = 0;
+let gameDone = false;
+
 const rockButton = document.getElementById("rockButton");
 rockButton.addEventListener("click", chooseRock);
 updateScore();
+
 
 function getComputerChoice(){//returns rock paper or scissors
     /**
@@ -44,16 +47,31 @@ function playRound(playerSelection, computerSelection){
 }
 
 function chooseRock(){
-    if(playRound(0,getComputerChoice()) === "win"){
-        playerScore++;
+    if(!gameDone){
+        if(playRound(0,getComputerChoice()) === "win"){
+            playerScore++;
+        }
+        else{
+            computerScore++;
+        }
+        checkGameOver();
+        updateScore();
     }
-    else{
-        computerScore++;
-    }
-    updateScore();
 }
 
 function updateScore(){
     document.getElementById("pScore").innerHTML = playerScore;
     document.getElementById("cpuScore").innerHTML = computerScore;
 }
+
+function checkGameOver(){
+    if(playerScore == 5 || computerScore == 5){
+        gameDone = true;
+        document.getElementById("gameOverResult").innerHTML = "You won";
+    }
+    if(computerScore == 5){
+        gameDone = true;
+        document.getElementById("gameOverResult").innerHTML = "You lost";
+    }
+}
+

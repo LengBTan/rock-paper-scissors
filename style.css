@@ -1,0 +1,8 @@
+.choiceContainer{
+    display: flex;
+    gap: 20px;
+}
+
+.choices{
+    font-size: 60px;
+}

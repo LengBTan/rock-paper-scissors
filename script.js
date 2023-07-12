@@ -8,6 +8,14 @@ const rockButton = document.getElementById("rockButton");
 rockButton.addEventListener("click", chooseRock);
 updateScore();
 
+const paperButton = document.getElementById("paperButton");
+paperButton.addEventListener("click", choosePaper);
+updateScore();
+
+const scissorsButton = document.getElementById("scissorsButton");
+scissorsButton.addEventListener("click", chooseScissors);
+updateScore();
+
 const resetButton = document.getElementById("reset");
 resetButton.addEventListener("click", resetGame);
 
@@ -54,6 +62,32 @@ function playRound(playerSelection, computerSelection){
 function chooseRock(){
     if(!gameDone){
         if(playRound(0,getComputerChoice()) === "win"){
+            playerScore++;
+        }
+        else{
+            computerScore++;
+        }
+        checkGameOver();
+        updateScore();
+    }
+}
+
+function choosePaper(){
+    if(!gameDone){
+        if(playRound(1,getComputerChoice()) === "win"){
+            playerScore++;
+        }
+        else{
+            computerScore++;
+        }
+        checkGameOver();
+        updateScore();
+    }
+}
+
+function chooseScissors(){
+    if(!gameDone){
+        if(playRound(2,getComputerChoice()) === "win"){
             playerScore++;
         }
         else{

@@ -8,6 +8,9 @@ const rockButton = document.getElementById("rockButton");
 rockButton.addEventListener("click", chooseRock);
 updateScore();
 
+const resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", resetGame);
+
 
 function getComputerChoice(){//returns rock paper or scissors
     /**
@@ -79,3 +82,10 @@ function checkGameOver(){
     }
 }
 
+function resetGame(){
+    playerScore = 0;
+    computerScore = 0;
+    gameDone = false;
+    updateScore();
+    resultBox.style.display = "none";
+}

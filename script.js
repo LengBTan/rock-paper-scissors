@@ -3,22 +3,58 @@ let computerScore = 0;
 let gameDone = false;
 let resultBox= document.getElementById("result");
 resultBox.style.display = "none";
+updateScore();//display the scores
 
 const rockButton = document.getElementById("rockButton");
-rockButton.addEventListener("click", chooseRock);
-updateScore();
+rockButton.addEventListener('click', () =>{
+    if(!gameDone){
+        if(playRound(0,getComputerChoice()) === "win"){
+            playerScore++;
+        }
+        else{
+            computerScore++;
+        }
+        checkGameOver();
+        updateScore();
+    }
+});
 
 const paperButton = document.getElementById("paperButton");
-paperButton.addEventListener("click", choosePaper);
-updateScore();
+paperButton.addEventListener('click', () =>{
+    if(!gameDone){
+        if(playRound(1,getComputerChoice()) === "win"){
+            playerScore++;
+        }
+        else{
+            computerScore++;
+        }
+        checkGameOver();
+        updateScore();
+    }
+});
 
 const scissorsButton = document.getElementById("scissorsButton");
-scissorsButton.addEventListener("click", chooseScissors);
-updateScore();
+scissorsButton.addEventListener('click', () =>{
+    if(!gameDone){
+        if(playRound(2,getComputerChoice()) === "win"){
+            playerScore++;
+        }
+        else{
+            computerScore++;
+        }
+        checkGameOver();
+        updateScore();
+    }
+});
 
 const resetButton = document.getElementById("reset");
-resetButton.addEventListener("click", resetGame);
-
+resetButton.addEventListener('click', () =>{
+    playerScore = 0;
+    computerScore = 0;
+    gameDone = false;
+    updateScore();
+    resultBox.style.display = "none";
+});
 
 function getComputerChoice(){//returns rock paper or scissors
     /**
@@ -59,45 +95,6 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function chooseRock(){
-    if(!gameDone){
-        if(playRound(0,getComputerChoice()) === "win"){
-            playerScore++;
-        }
-        else{
-            computerScore++;
-        }
-        checkGameOver();
-        updateScore();
-    }
-}
-
-function choosePaper(){
-    if(!gameDone){
-        if(playRound(1,getComputerChoice()) === "win"){
-            playerScore++;
-        }
-        else{
-            computerScore++;
-        }
-        checkGameOver();
-        updateScore();
-    }
-}
-
-function chooseScissors(){
-    if(!gameDone){
-        if(playRound(2,getComputerChoice()) === "win"){
-            playerScore++;
-        }
-        else{
-            computerScore++;
-        }
-        checkGameOver();
-        updateScore();
-    }
-}
-
 function updateScore(){
     document.getElementById("pScore").innerHTML = playerScore;
     document.getElementById("cpuScore").innerHTML = computerScore;
@@ -114,12 +111,4 @@ function checkGameOver(){
         document.getElementById("gameOverResult").innerHTML = "You lost";
         resultBox.style.display = "flex";
     }
-}
-
-function resetGame(){
-    playerScore = 0;
-    computerScore = 0;
-    gameDone = false;
-    updateScore();
-    resultBox.style.display = "none";
 }
